@@ -1,0 +1,23 @@
+cd C:\kafka\kafka_2.13-3.8.0
+
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+
+
+cd C:\kafka\kafka_2.13-3.8.0
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+
+cd C:\kafka\kafka_2.13-3.8.0
+
+.\bin\windows\kafka-topics.bat --create --topic crypto-prices --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+
+python producer.py
+
+python consumer.py
